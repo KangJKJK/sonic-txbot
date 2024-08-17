@@ -9,40 +9,40 @@ NODE_VERSION="18.x"
 
 if ! command -v node &> /dev/null
 then
-    echo -e "${BOLD_BLUE}Node.js is not installed. Installing Node.js ${NODE_VERSION}...${NC}"
+    echo -e "${BOLD_BLUE}Node.js가 설치되지 않았습니다. Node.js ${NODE_VERSION}를 설치합니다...${NC}"
     echo
     curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | sudo -E bash -
     sudo apt-get install -y nodejs
 else
-    echo -e "${BOLD_BLUE}Node.js is already installed.${NC}"
+    echo -e "${BOLD_BLUE}Node.js가 이미 설치되어 있습니다.${NC}"
 fi
 echo
 if ! command -v npm &> /dev/null
 then
-    echo -e "${BOLD_BLUE}npm is not installed. Installing npm...${NC}"
+    echo -e "${BOLD_BLUE}npm이 설치되지 않았습니다. npm을 설치합니다...${NC}"
     echo
     sudo apt-get install -y npm
 else
-    echo -e "${BOLD_BLUE}npm is already installed.${NC}"
+    echo -e "${BOLD_BLUE}npm이 이미 설치되어 있습니다.${NC}"
 fi
 echo
-echo -e "${BOLD_BLUE}Creating project directory and navigating into it${NC}"
+echo -e "${BOLD_BLUE}프로젝트 디렉토리를 생성하고 해당 디렉토리로 이동합니다.${NC}"
 mkdir -p SonicBatchTx
 cd SonicBatchTx
 echo
-echo -e "${BOLD_BLUE}Initializing a new Node.js project${NC}"
+echo -e "${BOLD_BLUE}새로운 Node.js 프로젝트를 초기화합니다.${NC}"
 echo
 npm init -y
 echo
-echo -e "${BOLD_BLUE}Installing required packages${NC}"
+echo -e "${BOLD_BLUE}필요한 패키지를 설치합니다.${NC}"
 echo
 npm install @solana/web3.js chalk bs58
 echo
-echo -e "${BOLD_BLUE}Prompting for private key${NC}"
+echo -e "${BOLD_BLUE}개인 키를 입력받습니다.${NC}"
 echo
-read -p "Enter your solana wallet private key: " privkey
+read -p "당신의 Solana 지갑 개인 키를 입력하세요: " privkey
 echo
-echo -e "${BOLD_BLUE}Creating the Node.js script file${NC}"
+echo -e "${BOLD_BLUE}Node.js 스크립트 파일을 생성합니다.${NC}"
 echo
 cat << EOF > zun.mjs
 import web3 from "@solana/web3.js";
@@ -80,9 +80,9 @@ const to = web3.Keypair.generate();
 })();
 EOF
 echo
-echo -e "${BOLD_BLUE}Executing the Node.js script${NC}"
+echo -e "${BOLD_BLUE}Node.js 스크립트를 실행합니다.${NC}"
 echo
 
 echo -e "${YELLOW}모든 작업이 완료되었습니다. 컨트롤+A+D로 스크린을 종료해주세요.${NC}"
-echo -e "${GREEN}스크립트 작성자:https://t.me/kjkresearch${NC}"
+echo -e "${GREEN}스크립트 작성자: https://t.me/kjkresearch${NC}"
 
